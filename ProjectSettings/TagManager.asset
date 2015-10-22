@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - GameMode
+  - Ball
+  - EnemiesSpawner
+  - Hud
   layers:
   - Default
   - TransparentFX
