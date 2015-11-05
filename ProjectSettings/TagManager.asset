@@ -8,6 +8,8 @@ TagManager:
   - Ball
   - EnemiesSpawner
   - Hud
+  - Score
+  - Highscore
   layers:
   - Default
   - TransparentFX
