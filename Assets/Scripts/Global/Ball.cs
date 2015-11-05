@@ -38,7 +38,7 @@ public class Ball : MonoBehaviour
 	{
 		if (other.CompareTag (Tags.m_floor)) 
 		{// Trigger with the left boundary --> lose a life
-			m_gameMode.loseLife();
+			m_gameMode.setHealthPlayer(-1);
 			Destroy(gameObject);
 		}
 	}
@@ -49,7 +49,9 @@ public class Ball : MonoBehaviour
 	{
 		if (collision.gameObject.CompareTag (Tags.m_enemies)) 
 		{// Collision with enemis --> destroy enemis
-			m_gameMode.killEnemy();
+			//TODO : We have to discuss about this behaviour. It's more logic to detect the collision on the enemies.
+			// Like this, they will destroy themselft and update the score
+			//m_gameMode.killEnemy();
 			Destroy(collision.gameObject);
 		}
 	}

@@ -46,12 +46,13 @@ public class GameMode : MonoBehaviour {
 
 	/*	-----
 		Return :
+			p_delta (int) : The value that will modidy the lifes number of the player
 		Parameters :
 		Function behavior : Function called to update the health of the player
 	*/
-	public void setHealthPlayer()
+	public void setHealthPlayer(int p_delta)
 	{
-	
+		m_playerHealth += p_delta;
 	}
 
 	/*	-----

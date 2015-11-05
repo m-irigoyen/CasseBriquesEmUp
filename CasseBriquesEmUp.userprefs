@@ -1,13 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameMode.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Camera\CameraResolution.cs">
     <Files>
-      <File FileName="CasseBriquesEmUp.sln" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Camera\CameraResolution.cs" Line="50" Column="2" />
-      <File FileName="Assets\Scripts\GameMode.cs" Line="18" Column="4" />
-      <File FileName="Assets\Scripts\Global\GamePreferences.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Global\Tags.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Global\PlayerInputs.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Camera\CameraResolution.cs" Line="58" Column="38" />
+      <File FileName="Assets\Scripts\GameMode.cs" Line="28" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
