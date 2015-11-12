@@ -21,15 +21,39 @@ public class Ball : MonoBehaviour
 	{
 		m_rigidbody.velocity = m_rigidbody.velocity.normalized * m_currentSpeed;
 	}
-
+	
+	/*	-----
+		Return :
+			speed (float) : the current ball speed
+		Parameters :
+		Function behavior : return the current speed value
+	*/
 	public float getSpeed()
 	{
 		return m_currentSpeed;
 	}
-
+	
+	/*	-----
+		Return :
+		Parameters :
+			p_speed (float) : the new speed
+		Function behavior : set a new speed value
+	*/
 	public void setSpeed(float p_speed)
 	{
 		m_currentSpeed = p_speed;
+	}
+	
+	/*	-----
+		Return :
+		Parameters :
+			p_v3 (Vector3) : the new direction of the ball 
+		Function behavior : Add a force to the ball with the input v3 direction
+	*/
+	public void setForce(Vector3 p_v3)
+	{
+		m_rigidbody.velocity = Vector3.zero;
+		m_rigidbody.AddForce (p_v3 * m_currentSpeed);
 	}
 	
 	//TODO: loseLife : Remove a life to the player, maybe prepare a new ball or end the game
@@ -40,19 +64,6 @@ public class Ball : MonoBehaviour
 		{// Trigger with the left boundary --> lose a life
 			m_gameMode.setHealthPlayer(-1);
 			Destroy(gameObject);
-		}
-	}
-	
-	//TODO: killEnemy : Kill an enemy : update the score, end the level ?, pop new wayve, ...
-	//public void killEnemy()
-	void OnCollisionEnter(Collision collision)
-	{
-		if (collision.gameObject.CompareTag (Tags.m_enemies)) 
-		{// Collision with enemis --> destroy enemis
-			//TODO : We have to discuss about this behaviour. It's more logic to detect the collision on the enemies.
-			// Like this, they will destroy themselft and update the score
-			//m_gameMode.killEnemy();
-			Destroy(collision.gameObject);
 		}
 	}
 }
