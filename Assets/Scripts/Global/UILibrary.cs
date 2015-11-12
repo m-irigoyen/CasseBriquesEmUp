@@ -17,13 +17,13 @@ public class UILibrary : MonoBehaviour
     // On clicked buttonNewGame
     public void newGame()
     {
-        //TODO : call corresponding gamemode function
+		Application.LoadLevel (2);
     }
 
     // On clicked buttonNewGame
     public void options()
     {
-        //TODO : call corresponding gamemode function
+		Application.LoadLevel (1);
     }
 
     // On clicked buttonNewGame

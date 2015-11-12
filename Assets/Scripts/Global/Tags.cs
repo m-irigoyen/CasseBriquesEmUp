@@ -9,6 +9,6 @@ public class Tags : MonoBehaviour {
 	public const string m_ball = "Ball";
 	public const string m_enemiesSpawner = "EnemiesSpawner";
 	public const string m_hud = "Hud";
-    public const string m_score = "Score";
-    public const string m_highscore = "Highscore";
+	public const string m_floor = "Floor";
+	public const string m_enemies = "Enemies";
 }
