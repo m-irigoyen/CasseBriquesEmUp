@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Camera\CameraResolution.cs" />
      <Compile Include="Assets\Scripts\EnemyScript\CommonEnemy.cs" />
+     <Compile Include="Assets\Scripts\EnemyScript\FallingEnemy.cs" />
      <Compile Include="Assets\Scripts\GameMode.cs" />
      <Compile Include="Assets\Scripts\Global\Ball.cs" />
      <Compile Include="Assets\Scripts\Global\GamePreferences.cs" />

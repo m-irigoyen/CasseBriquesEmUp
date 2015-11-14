@@ -5,7 +5,7 @@ public class CommonEnemy : MonoBehaviour {
 
 	public int m_healthPoints;
 	public int m_scoreValue; //amount of points earned by destroying this enemy
-	public float m_speed;
+	public float m_speed = 1;
 	private GameObject m_GameMode ;
 	private Rigidbody2D m_rb;
 	private BoxCollider2D m_hitBox;
