@@ -5,6 +5,7 @@ public class Ball : MonoBehaviour
 {
 	public float m_baseSpeed;
 
+	bool m_isActive;
 	GameMode m_gameMode;
 	float m_currentSpeed;
 	Rigidbody m_rigidbody;
@@ -15,11 +16,15 @@ public class Ball : MonoBehaviour
 		m_gameMode = GameObject.FindGameObjectWithTag (Tags.m_gameMode).GetComponent<GameMode>();
 		m_currentSpeed = m_baseSpeed;
 		m_rigidbody.AddForce (new Vector3(1, 1, 0) * m_currentSpeed);
+		m_isActive = false;
 	}
 
 	void Update ()
 	{
-		m_rigidbody.velocity = m_rigidbody.velocity.normalized * m_currentSpeed;
+		if (m_isActive)
+			m_rigidbody.velocity = m_rigidbody.velocity.normalized * m_currentSpeed;
+		else
+			m_rigidbody.velocity = Vector3.zero;
 	}
 	
 	/*	-----
@@ -52,18 +57,24 @@ public class Ball : MonoBehaviour
 	*/
 	public void setForce(Vector3 p_v3)
 	{
+		p_v3.Normalize ();
 		m_rigidbody.velocity = Vector3.zero;
 		m_rigidbody.AddForce (p_v3 * m_currentSpeed);
+		m_isActive = true;
 	}
 	
 	//TODO: loseLife : Remove a life to the player, maybe prepare a new ball or end the game
 	//public void loseLife()
 	void onTriggerEnter(Collider other)
 	{
-		if (other.CompareTag (Tags.m_floor)) 
+		if (other.CompareTag (Tags.m_killX)) 
 		{// Trigger with the left boundary --> lose a life
 			m_gameMode.setHealthPlayer(-1);
 			Destroy(gameObject);
 		}
+	}
+
+	void setActivate(bool p_act) {
+		m_isActive = p_act;
 	}
 }
