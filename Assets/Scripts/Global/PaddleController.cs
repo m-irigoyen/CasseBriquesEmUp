@@ -54,15 +54,29 @@ public class PaddleController : MonoBehaviour
             // If the ball reference is set
             if (m_ball != null)
             {
-                //m_ball.GetComponent<Ball>().set
+                m_ball.GetComponent<Ball>().setForce(new Vector3(1, 1, 0)); // Launching the ball
+                m_ball.gameObject.transform.SetParent(null);                // Freeing the ball from the paddle
+                m_ball = null;
             }
         }
-
-        //TODO: Manage collisions with the ball
     }
 
-    void setEnableInput(bool enableInput)
+    public void setEnableInput(bool enableInput)
     {
         this.m_enableInput = enableInput;
+    }
+
+    /*	-----
+		Return :
+		Parameters : 
+            - Gameobject ball : an inactive Ball prefab
+		Function behavior : places the ball on the paddle as a child object
+	*/
+    public void setBall(GameObject ball)
+    {
+        m_ball = ball;
+        m_ball.transform.SetParent(this.transform);
+        m_ball.transform.position = new Vector3(0.5f, 0.5f, 0);
+        //TODO: set ball inactive
     }
 }
