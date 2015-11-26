@@ -18,6 +18,7 @@ public class EnnemySpawner : MonoBehaviour {
         {
             totalProbs += p;
         }
+
 	
 	}
 	
