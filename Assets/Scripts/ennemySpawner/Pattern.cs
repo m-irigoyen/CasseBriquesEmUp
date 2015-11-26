@@ -40,6 +40,7 @@ public class Pattern : MonoBehaviour {
             }
             i++;
         }
+      Destroy(this.gameObject);
     }
-
+    
 }
