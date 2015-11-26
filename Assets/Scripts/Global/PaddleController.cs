@@ -7,16 +7,17 @@ public class PaddleController : MonoBehaviour
     public float m_maxDistance;         // The max distance represents how far the paddle can move from its relative origin
     public float m_speed;               // The speed at which the paddle moves
 
+
     // Private variables
     bool m_thinMode;    // When this is true, the paddle is rotated to present its thin side
     bool m_enableInput; // When this is true, the player can move the paddle.
     GameObject m_ball;  // Reference to the ball. When the ball is created for the first time, it is placed on the Paddle, inactive. When the player activates it, the ball is launched.
-
-    /// <summary>
+	public float m_boundAngle;			// The max rebound angle of the ball at the extremity of the paddle 
+	public float m_paddleHeight;
+	public float m_paddleWidth;	/// <summary>
     /// Use this for initialization
     /// </summary>
-    void Start ()
-    {
+	void Start ()    {
 	    
 	}
 
@@ -78,4 +79,23 @@ public class PaddleController : MonoBehaviour
         m_ball.transform.SetParent(this.transform);
         m_ball.transform.localPosition = new Vector3(0.5f, 0.5f, 0);
     }
+
+	void OnCollisionEnter (Collision collider)
+	{
+		if (collider.gameObject.tag == Tags.m_ball) {
+
+            Debug.Log("SISI MA GUEULE COLLISION");
+
+            float paddleWidth =this.transform.lossyScale.y;	//TODO: find better code for that
+			float ballPosition=this.transform.position.y - collider.gameObject.transform.position.y;	//The difference between the paddle and the ball vertical coordinates, ie the relative distance between the ball collision point and the center of the paddle surface
+
+			float exitAngle=m_boundAngle*2*ballPosition/paddleWidth;									//The exit angle of the ball
+			Vector3 exitVector=new Vector3(Mathf.Cos (exitAngle), Mathf.Sin (exitAngle), 0);			
+
+			collider.gameObject.GetComponent<Ball>().setForce(exitVector);
+		
+		}
+	}
+
+
 }
