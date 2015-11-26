@@ -84,6 +84,24 @@ public class GameMode : MonoBehaviour {
 	*/
 	public void updateScore(int p_score)
 	{
+		
+	}
+	
+	/*	-----
+		Return :
+		Parameters :
+		Function behavior : Remove a life to the player, check if the game is lost, prepare new life
+	*/
+	public void loseLife()
+	{
+		m_playerHealth--;
+		if (m_playerHealth == 0) 
+		{// DEFEAT !
 
+		}
+		else 
+		{
+			//m_player.prepareNewBall();
+		}
 	}
 }
