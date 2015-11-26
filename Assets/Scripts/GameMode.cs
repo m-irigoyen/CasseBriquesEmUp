@@ -28,8 +28,9 @@ public class GameMode : MonoBehaviour {
         // Init everything
 		m_paddle = GameObject.FindGameObjectWithTag (Tags.m_player);
 
+        m_paddle.GetComponent<PaddleController>().setEnableInput(true);
+        this.createBall();
 
-        // Create the first ball
 	}
 
 	/*	-----
@@ -131,6 +132,9 @@ public class GameMode : MonoBehaviour {
     public void createBall()
     {
         GameObject newBall = (GameObject)Instantiate(ballPrefab, new Vector3(0, 0, 0), Quaternion.identity);    // Creating the new ball
+        newBall.GetComponent<Ball>().setActivate(false);
         m_paddle.GetComponent<PaddleController>().setBall(newBall); // Giving the ball to the paddle
+
+        this.m_nbBallsInPlay++;
     }
 }

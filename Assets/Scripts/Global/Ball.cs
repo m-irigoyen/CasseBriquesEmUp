@@ -74,7 +74,7 @@ public class Ball : MonoBehaviour
 		}
 	}
 
-	void setActivate(bool p_act) {
+	public void setActivate(bool p_act) {
 		m_isActive = p_act;
 	}
 }

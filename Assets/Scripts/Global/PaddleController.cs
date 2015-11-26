@@ -28,7 +28,7 @@ public class PaddleController : MonoBehaviour
         if (m_enableInput)
         {
             // Compute new position for the ball
-            Vector3 newPos = new Vector3(0, this.transform.position.y + Input.GetAxis("Vertical") * m_speed * Time.deltaTime, 0);
+            Vector3 newPos = new Vector3(-10, this.transform.position.y + Input.GetAxis("Vertical") * m_speed * Time.deltaTime, 0);
 
             // If paddleAnchor is set, check boundaries relative to it
             if (m_paddleAnchor != null)
@@ -52,10 +52,10 @@ public class PaddleController : MonoBehaviour
 
             // Launching the ball
             // If the ball reference is set
-            if (m_ball != null)
+            if (m_ball != null && Input.GetAxis(PlayerInputs.m_launchBall) != 0)
             {
-                m_ball.GetComponent<Ball>().setForce(new Vector3(1, 1, 0)); // Launching the ball
                 m_ball.gameObject.transform.SetParent(null);                // Freeing the ball from the paddle
+                m_ball.GetComponent<Ball>().setForce(new Vector3(1, 1, 0)); // Launching the ball
                 m_ball = null;
             }
         }
@@ -76,7 +76,6 @@ public class PaddleController : MonoBehaviour
     {
         m_ball = ball;
         m_ball.transform.SetParent(this.transform);
-        m_ball.transform.position = new Vector3(0.5f, 0.5f, 0);
-        //TODO: set ball inactive
+        m_ball.transform.localPosition = new Vector3(0.5f, 0.5f, 0);
     }
 }
