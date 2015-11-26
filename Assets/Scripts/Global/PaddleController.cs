@@ -7,37 +7,62 @@ public class PaddleController : MonoBehaviour
     public float m_maxDistance;         // The max distance represents how far the paddle can move from its relative origin
     public float m_speed;               // The speed at which the paddle moves
 
-	// Use this for initialization
-	void Start ()
+    // Private variables
+    bool m_thinMode;    // When this is true, the paddle is rotated to present its thin side
+    bool m_enableInput; // When this is true, the player can move the paddle.
+    GameObject m_ball;  // Reference to the ball. When the ball is created for the first time, it is placed on the Paddle, inactive. When the player activates it, the ball is launched.
+
+    /// <summary>
+    /// Use this for initialization
+    /// </summary>
+    void Start ()
     {
 	    
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    /// <summary>
+    /// Update is called once per frame. Player movement is updated here
+    /// </summary>
+    void Update ()
     {
-        // Compute new position for the ball
-        Vector3 newPos = new Vector3(0, this.transform.position.y + Input.GetAxis("Vertical") * m_speed * Time.deltaTime, 0);
-
-        // If paddleAnchor is set, check boundaries relative to it
-        if (m_paddleAnchor != null)
+        if (m_enableInput)
         {
-            if (newPos.y > (m_paddleAnchor.position.y + m_maxDistance))
-                newPos.y = m_maxDistance;
-            else if (newPos.y < (m_paddleAnchor.position.y - m_maxDistance))
-                newPos.y = -m_maxDistance;
-        }
-        // If it isn't set, just check relative to origin
-        else
-        {
-            if (newPos.y > m_maxDistance)
-                newPos.y = m_maxDistance;
-            else if (newPos.y < -m_maxDistance)
-                newPos.y = -m_maxDistance;
-        }
+            // Compute new position for the ball
+            Vector3 newPos = new Vector3(0, this.transform.position.y + Input.GetAxis("Vertical") * m_speed * Time.deltaTime, 0);
 
-        this.transform.position = newPos;
+            // If paddleAnchor is set, check boundaries relative to it
+            if (m_paddleAnchor != null)
+            {
+                if (newPos.y > (m_paddleAnchor.position.y + m_maxDistance))
+                    newPos.y = m_maxDistance;
+                else if (newPos.y < (m_paddleAnchor.position.y - m_maxDistance))
+                    newPos.y = -m_maxDistance;
+            }
+            // If it isn't set, just check relative to origin
+            else
+            {
+                if (newPos.y > m_maxDistance)
+                    newPos.y = m_maxDistance;
+                else if (newPos.y < -m_maxDistance)
+                    newPos.y = -m_maxDistance;
+            }
+
+            // Setting the new ball position
+            this.transform.position = newPos;
+
+            // Launching the ball
+            // If the ball reference is set
+            if (m_ball != null)
+            {
+                //m_ball.GetComponent<Ball>().set
+            }
+        }
 
         //TODO: Manage collisions with the ball
+    }
+
+    void setEnableInput(bool enableInput)
+    {
+        this.m_enableInput = enableInput;
     }
 }

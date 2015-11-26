@@ -7,18 +7,18 @@ public class GameMode : MonoBehaviour {
 	private int m_score = 0;
 	private int m_playerHealth = 3;
 	private bool m_isPaused = false;
-	private GameObject m_hud;
-	private GameObject m_player;
-	private GameObject[] m_enemiesSpawner;
-	
-	/*	-----
+	private GameObject m_hud;               // Reference to the hud
+	private GameObject m_paddle;            // Reference to the paddle
+	private GameObject[] m_enemiesSpawner;  // Reference to the ennemy spawners
+
+    /*	-----
 		Return :
 		Parameters :
 		Function behavior : Function called at the creation of the game
 	*/
-	void Start () 
+    void Start () 
 	{
-		m_player = GameObject.FindGameObjectWithTag (Tags.m_player);
+		m_paddle = GameObject.FindGameObjectWithTag (Tags.m_player);
 	}
 
 	/*	-----
