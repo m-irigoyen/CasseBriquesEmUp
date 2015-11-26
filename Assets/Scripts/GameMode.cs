@@ -4,21 +4,33 @@ using UnityEngine.UI;
 
 public class GameMode : MonoBehaviour {
 
+    //Prefabs
+    public GameObject ballPrefab;
+
+    // Game variables
 	private int m_score = 0;
 	private int m_playerHealth = 3;
 	private bool m_isPaused = false;
-	private GameObject m_hud;
-	private GameObject m_player;
-	private GameObject[] m_enemiesSpawner;
-	
-	/*	-----
+    private int m_nbBallsInPlay = 0;
+
+    // GameObject references
+	private GameObject m_hud;               // Reference to the hud
+	private GameObject m_paddle;            // Reference to the paddle
+	private GameObject[] m_enemiesSpawner;  // Reference to the ennemy spawners
+
+    /*	-----
 		Return :
 		Parameters :
 		Function behavior : Function called at the creation of the game
 	*/
-	void Start () 
+    void Start () 
 	{
-		m_player = GameObject.FindGameObjectWithTag (Tags.m_player);
+        // Init everything
+		m_paddle = GameObject.FindGameObjectWithTag (Tags.m_player);
+
+        m_paddle.GetComponent<PaddleController>().setEnableInput(true);
+        this.createBall();
+
 	}
 
 	/*	-----
@@ -32,6 +44,13 @@ public class GameMode : MonoBehaviour {
 		{
 			switchPause();
 		}
+
+        // If there are no more balls in play, create a ball
+        if (m_nbBallsInPlay <= 0)
+        {
+            this.loseLife();    // The player looses a ball
+            this.createBall();  // A new ball is created
+        }
 	}
 
 	/*	-----
@@ -104,4 +123,18 @@ public class GameMode : MonoBehaviour {
 			//m_player.prepareNewBall();
 		}
 	}
+
+    /*	-----
+		Return :
+		Parameters :
+		Function behavior : Create an inactive ball and place it on the paddle
+	*/
+    public void createBall()
+    {
+        GameObject newBall = (GameObject)Instantiate(ballPrefab, new Vector3(0, 0, 0), Quaternion.identity);    // Creating the new ball
+        newBall.GetComponent<Ball>().setActivate(false);
+        m_paddle.GetComponent<PaddleController>().setBall(newBall); // Giving the ball to the paddle
+
+        this.m_nbBallsInPlay++;
+    }
 }
