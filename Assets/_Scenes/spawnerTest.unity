@@ -135,12 +135,12 @@ Prefab:
     - target: {fileID: 11400764, guid: 8aa1097e895dda849b0307b0362f0f87, type: 2}
       propertyPath: patterns.Array.data[0]
       value: 
-      objectReference: {fileID: 11434176, guid: 119f7ae9555bf9f45b39038e973c8d26,
+      objectReference: {fileID: 11482518, guid: d90296c140f410e4eb9a180f38c8d80c,
         type: 2}
     - target: {fileID: 11400764, guid: 8aa1097e895dda849b0307b0362f0f87, type: 2}
       propertyPath: patterns.Array.data[1]
       value: 
-      objectReference: {fileID: 11486504, guid: d90296c140f410e4eb9a180f38c8d80c,
+      objectReference: {fileID: 11478738, guid: 119f7ae9555bf9f45b39038e973c8d26,
         type: 2}
     - target: {fileID: 11400764, guid: 8aa1097e895dda849b0307b0362f0f87, type: 2}
       propertyPath: patternProbabilities.Array.data[0]

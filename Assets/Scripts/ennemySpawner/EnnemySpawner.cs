@@ -40,7 +40,12 @@ public class EnnemySpawner : MonoBehaviour {
                 
                 if(currentSum >= randomSpawn)
                 {
-                    Instantiate(patterns[i]);
+                    Pattern newPattern = Instantiate(patterns[i]);
+
+                    newPattern.transform.position = new Vector3(this.transform.position.x,
+                                                                this.transform.position.y, 
+                                                                this.transform.position.z);
+
                     found = true;
                 }
                 i++;

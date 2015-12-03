@@ -84,7 +84,9 @@ public class PaddleController : MonoBehaviour
 	{
 		if (collider.gameObject.tag == Tags.m_ball) {
 
-			float paddleWidth=this.transform.lossyScale.y;	//TODO: find better code for that
+            Debug.Log("SISI MA GUEULE COLLISION");
+
+            float paddleWidth =this.transform.lossyScale.y;	//TODO: find better code for that
 			float ballPosition=this.transform.position.y - collider.gameObject.transform.position.y;	//The difference between the paddle and the ball vertical coordinates, ie the relative distance between the ball collision point and the center of the paddle surface
 
 			float exitAngle=m_boundAngle*2*ballPosition/paddleWidth;									//The exit angle of the ball
