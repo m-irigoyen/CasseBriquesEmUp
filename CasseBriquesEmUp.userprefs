@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Global\Ball.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Global\PaddleController.cs">
     <Files>
-      <File FileName="Assets\Scripts\Global\Ball.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Global\Tags.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameMode.cs" Line="140" Column="2" />
+      <File FileName="Assets\Scripts\Global\PaddleController.cs" Line="100" Column="6" />
+      <File FileName="Assets\Scripts\Global\Tags.cs" Line="15" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
