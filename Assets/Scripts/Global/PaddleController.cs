@@ -18,7 +18,7 @@ public class PaddleController : MonoBehaviour
     /// Use this for initialization
     /// </summary>
 	void Start ()    {
-	    
+		this.transform.position = m_paddleAnchor.position;
 	}
 
     /// <summary>
@@ -29,15 +29,15 @@ public class PaddleController : MonoBehaviour
         if (m_enableInput)
         {
             // Compute new position for the ball
-            Vector3 newPos = new Vector3(-10, this.transform.position.y + Input.GetAxis("Vertical") * m_speed * Time.deltaTime, 0);
+            Vector3 newPos = new Vector3(this.transform.position.x, this.transform.position.y + Input.GetAxis("Vertical") * m_speed * Time.deltaTime, 0);
 
             // If paddleAnchor is set, check boundaries relative to it
             if (m_paddleAnchor != null)
             {
                 if (newPos.y > (m_paddleAnchor.position.y + m_maxDistance))
-                    newPos.y = m_maxDistance;
+					newPos.y = m_paddleAnchor.position.y +m_maxDistance;
                 else if (newPos.y < (m_paddleAnchor.position.y - m_maxDistance))
-                    newPos.y = -m_maxDistance;
+					newPos.y = m_paddleAnchor.position.y -m_maxDistance;
             }
             // If it isn't set, just check relative to origin
             else
@@ -84,12 +84,11 @@ public class PaddleController : MonoBehaviour
 	{
 		if (collider.gameObject.tag == Tags.m_ball) {
 
-            Debug.Log("SISI MA GUEULE COLLISION");
-
             float paddleWidth =this.transform.lossyScale.y;	//TODO: find better code for that
 			float ballPosition=this.transform.position.y - collider.gameObject.transform.position.y;	//The difference between the paddle and the ball vertical coordinates, ie the relative distance between the ball collision point and the center of the paddle surface
 
-			float exitAngle=m_boundAngle*2*ballPosition/paddleWidth;									//The exit angle of the ball
+			float exitAngle=Mathf.Deg2Rad*m_boundAngle*2*ballPosition/m_paddleHeight;									//The exit angle of the ball
+			exitAngle *= -1;
 			Vector3 exitVector=new Vector3(Mathf.Cos (exitAngle), Mathf.Sin (exitAngle), 0);			
 
 			collider.gameObject.GetComponent<Ball>().setForce(exitVector);
