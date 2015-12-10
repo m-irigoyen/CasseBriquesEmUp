@@ -20,7 +20,7 @@ public class CommonEnemy : MonoBehaviour {
 	void Update()
 	{
 		if (m_healthPoints <= 0) {
-			//Call GameMode and give the amount of points earned by destroying the enemy
+			this.m_GameMode.GetComponent<GameMode>().updateScore(this.m_scoreValue);	//Call GameMode and give the amount of points earned by destroying the enemy
 			Destroy (gameObject);
 		}
 	}
