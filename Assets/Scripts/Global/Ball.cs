@@ -58,6 +58,8 @@ public class Ball : MonoBehaviour
 	public void setForce(Vector3 p_v3)
 	{
 		p_v3.Normalize ();
+		if(m_rigidbody == null)
+			m_rigidbody = GetComponent<Rigidbody> ();
 		m_rigidbody.velocity = Vector3.zero;
 		m_rigidbody.AddForce (p_v3 * m_currentSpeed);
 		m_isActive = true;
