@@ -18,6 +18,8 @@ public class GameMode : MonoBehaviour {
 	private GameObject m_paddle;            // Reference to the paddle
 	private GameObject[] m_enemiesSpawner;  // Reference to the ennemy spawners
 
+	private Text m_scoreText;
+
     /*	-----
 		Return :
 		Parameters :
@@ -30,6 +32,9 @@ public class GameMode : MonoBehaviour {
 
         m_paddle.GetComponent<PaddleController>().setEnableInput(true);
         this.createBall();
+
+		m_scoreText = GameObject.Find("Score").GetComponent<Text>();;
+		updateScore (0);
 
 	}
 
@@ -103,7 +108,9 @@ public class GameMode : MonoBehaviour {
 	*/
 	public void updateScore(int p_score)
 	{
-		
+		m_score = m_score + p_score;
+
+		m_scoreText.text = "Score : " + m_score;
 	}
 	
 	/*	-----

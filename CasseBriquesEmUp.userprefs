@@ -1,12 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Global\PaddleController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameMode.cs">
     <Files>
-      <File FileName="Assets\Scripts\Global\Ball.cs" Line="59" Column="3" />
-      <File FileName="Assets\Scripts\Global\Tags.cs" Line="15" Column="1" />
-      <File FileName="Assets\Scripts\Global\PaddleController.cs" Line="29" Column="19" />
-      <File FileName="Assets\Scripts\Global\Boundary.cs" Line="5" Column="32" />
-      <File FileName="Assets\Scripts\GameMode.cs" Line="31" Column="54" />    </Files>
+      <File FileName="Assets\Scripts\EnemyScript\CommonEnemy.cs" Line="19" Column="31" />
+      <File FileName="Assets\Scripts\Global\Ball.cs" Line="75" Column="18" />
+      <File FileName="Assets\Scripts\Global\Tags.cs" Line="10" Column="42" />
+      <File FileName="Assets\Scripts\Global\PaddleController.cs" Line="85" Column="48" />
+      <File FileName="Assets\Scripts\Global\Boundary.cs" Line="11" Column="37" />
+      <File FileName="Assets\Scripts\GameMode.cs" Line="116" Column="10" />
+    </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
