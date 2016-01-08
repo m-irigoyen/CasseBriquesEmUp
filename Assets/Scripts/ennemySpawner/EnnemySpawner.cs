@@ -7,6 +7,7 @@ public class EnnemySpawner : MonoBehaviour {
     public List<Pattern> patterns;
     public List<int> patternProbabilities;
 
+	// A pattern is spawned every spawnRate seconds
     public float spawnRate;
 
     private float timer = 0.0f;
@@ -38,6 +39,7 @@ public class EnnemySpawner : MonoBehaviour {
             {
                 currentSum += patternProbabilities[i];
                 
+				//If randomSpawn is overpassed, we spawn the pattern at index i
                 if(currentSum >= randomSpawn)
                 {
                     Pattern newPattern = Instantiate(patterns[i]);

@@ -2,13 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/*
+* A pattern spawns a given number of enemies in a given configuration
+*/
 public class Pattern : MonoBehaviour {
 
     public List<CommonEnemy> possibleBlocks;
+	//possibleBlocksProbabilities[i] is the relative probability of spawning possibleBlocks[i]
     public List<int> possibleBlocksProbabilities;
 
     private int totalProbs = 0;
-    // Use this for initialization
+	
     void Start () {
 
 	    foreach(int prob in possibleBlocksProbabilities)
@@ -25,9 +29,10 @@ public class Pattern : MonoBehaviour {
         {
             currentSum += possibleBlocksProbabilities[i];
 
+			//If randomSpawn is overpassed, we have found the random enemy type at index i
             if (currentSum >= randomSpawn)
             {
-                // We instantiate those enemies
+                // We instantiate one enemy at each spot
                 for (int s = 0; s < this.transform.childCount; s++) {
                     CommonEnemy newBlock = Instantiate(possibleBlocks[i]);
                     newBlock.transform.position = new Vector3(  this.transform.GetChild(s).position.x,
@@ -40,6 +45,7 @@ public class Pattern : MonoBehaviour {
             }
             i++;
         }
+	// The pattern just spawns the enemies; it is destroyed right afterwards
       Destroy(this.gameObject);
     }
     
